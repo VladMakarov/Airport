@@ -24,10 +24,6 @@ public class EmployeeIT {
 	private EntityManager em;
 	private EntityTransaction tx;
 	
-//	 SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
-//	 Session session = sessionFactory.getCurrentSession();
-//	 Transaction transaction = session.beginTransaction();
-
 	@Before
 	public void setUp() throws Exception {
 		em = emf.createEntityManager();
@@ -42,15 +38,15 @@ public class EmployeeIT {
 	}
 
 	@Test
-	public void pas(){
+	public void Airport(){
 		//Passenger pas = em.find(Employee.class, 1L);
-		Passenger pas= new Passenger();
-		pas.setFname("vlad");
-		pas.setLname("mak");
-		pas.setPatronymic("aleks");
-		pas.setPhoneNumber("123");
+		Airport airport= new Airport();
+		airport.setName("lal");
+		airport.setAdress("Kh");
+		airport.setAirportId(1l);
+		//pas.setPhoneNumber("123");
 		//pas.toString();
-		System.out.println(pas.getFname() + " " + pas.getLname());
+		System.out.println(airport.toString());
 	}
 	
 	@Test

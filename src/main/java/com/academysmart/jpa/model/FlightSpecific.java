@@ -1,6 +1,9 @@
 package com.academysmart.jpa.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,34 +18,74 @@ public class FlightSpecific {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "flightSpecificId")
 	@SequenceGenerator(name = "flightSpecificId", sequenceName = "flightSpecificId_Seq", initialValue=1, allocationSize=1)
 	private long flightSpecificId;
-	@ManyToOne
-	@JoinColumn(name = "flightId", referencedColumnName = "flightId")
-	private Flight flight ;
-	private String date;
-	private String race;
-	private int freeSeats;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "flightTypeId", referencedColumnName = "flightTypeIdId")
+    private FlightType flightType;
+	private Date date;
+	private String departure;
+	private String arrival;
+    private int price;
 	
 	public FlightSpecific() {
 		
 	}
 	
-	public String getDate(){
+	public long getFlightSpecificId(){
+		return flightSpecificId;
+	}
+	
+	public void setFlightSpecificId(long flightSpecificId){
+		this.flightSpecificId = flightSpecificId;
+	}
+	
+    public FlightType getFlightType() {
+        return flightType;
+    }
+
+    public void setFlightType(FlightType flightType) {
+        this.flightType = flightType;
+    }
+	
+	public Date getDate(){
 		return date;
 	}
-	public void setDate(String date){
+	
+	public void setDate(Date date){
 		this.date = date;
 	}
-	public String getRace(){
-		return race;
-	}
-	public void setRace(String race){
-		this.race = race;
-	}
-	public int getFreeSeats() {
-		return freeSeats;
-	}
-	public void setFreeSeats(int freeSeats) {
-		this.freeSeats = freeSeats;
+
+	public String getDeparture() {
+		return departure;
 	}
 
+	public void setDeparture(String departure) {
+		this.departure = departure;
+	}
+
+	public String getArrival() {
+		return arrival;
+	}
+
+	public void setArrival(String arrival) {
+		this.arrival = arrival;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	@Override
+	public String toString() {
+		return "Flight Specific: "
+				+ "(Flight Specific ID - " + " " + flightSpecificId 
+				+ ", Flight Type - " + flightType
+				+ ", Date - " + date
+				+ ", Departure - " + departure 
+				+ ", Arrival - " + arrival 
+				+ ", Price - " + price + ");";
+	}
 }

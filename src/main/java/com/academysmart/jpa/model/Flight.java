@@ -16,43 +16,45 @@ public class Flight {
 	@SequenceGenerator(name = "FlightId", sequenceName = "FlightId_Seq", initialValue=1, allocationSize=1)
 	private long flightId;
 	@ManyToOne
-	@JoinColumn(name = "flightTypeId", referencedColumnName = "flightTypeId")
-	private FlightType flightType ;
+	@JoinColumn(name = "flightSpecificId", referencedColumnName = "flightSpecificId")
+	private FlightSpecific flightSpecific ;
 	@ManyToOne
 	@JoinColumn(name = "airportId", referencedColumnName = "airportId")
 	private Airport airport ;
-	private String departure;
-	private String arrival;
-	private int price;
-	private String type;
 	
 	public Flight() {
 		
 	}
 	
-	public String getDeparture() {
-		return departure;
+	public long getFlightId(){
+		return flightId;
 	}
-	public void setDeparture(String departure) {
-		this.departure = departure;
+	
+	public void setFlightId(long flightId){
+		this.flightId = flightId;
 	}
-	public String getArrival() {
-		return arrival;
+	
+	public FlightSpecific getFlightSpecific(){
+		return flightSpecific;
 	}
-	public void setArrival(String arrival) {
-		this.arrival = arrival;
+	
+	public void setFlightSpecific(FlightSpecific flightSpecific){
+		this.flightSpecific = flightSpecific;
 	}
-	public int getPrice() {
-		return price;
+	
+	public Airport getAirport(){
+		return airport;
 	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
+	
+	public void setSirport(Airport airport){
+		this.airport = airport;
 	}
 
+	@Override
+	public String toString() {
+		return "Flight: "
+				+ "(Flight ID - " + " " + flightId  
+				+ ", Flight Specific - " + flightSpecific
+				+ ", Airport - " + airport + ");";
+	}
 }

@@ -8,11 +8,8 @@ public class Airport {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "AirportId")
 	@SequenceGenerator(name = "AirportId", sequenceName = "AirportId_Seq", initialValue=1, allocationSize=1)
-//	@Column (name = "AIRPORTID")
 	private long airportId;
-//	@Column (name = "NAME")
 	private String name;
-//	@Column (name = "ADRESS")
 	private String adress;
 	
 	public Airport() {
@@ -40,10 +37,9 @@ public class Airport {
 	
 	@Override
 	public String toString() {
-		return "Airport{" +
-					"idAirport=" + airportId +
-					", name='" + name + '\'' +
-					", adress='" + adress + '\'' +
-					'}';
+		return "Airport: "
+				+ "(Airport ID - " + " " + airportId  
+				+ ", Name - " + name
+				+ ", Adress - " + adress + ");";
 	}
 }
