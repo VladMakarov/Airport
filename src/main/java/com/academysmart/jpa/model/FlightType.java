@@ -15,17 +15,17 @@ public class FlightType {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long flightTypeId;
 	private String numberOfClass;
-	private int price;
+	private double price;
 	
 	public FlightType()	{
 		
 	}
 	
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
@@ -36,30 +36,6 @@ public class FlightType {
 	public void setNumberOfClass(String numberOfClass) {
 		this.numberOfClass = numberOfClass;
 	}
-
-//	public int getFirstClass() {
-//		return firstClass;
-//	}
-//
-//	public void setFirstClass(int firstClass) {
-//		this.firstClass = firstClass;
-//	}
-//
-//	public int getSecondClass() {
-//		return secondClass;
-//	}
-//	
-//	public void setSecondClass(int secondClass) {
-//		this.secondClass = secondClass;
-//	}
-//
-//	public int getThirdClass() {
-//		return thirdClass;
-//	}
-//
-//	public void setThirdClass(int thirdClass) {
-//		this.thirdClass = thirdClass;
-//	}
 	
 	@Override
 	public String toString() {

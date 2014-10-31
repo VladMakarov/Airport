@@ -2,9 +2,8 @@ package EntityActions;
 
 import java.util.List;
 import javax.persistence.EntityTransaction;
-import com.academysmart.jpa.model.Flight;
 import MyEntityFactory.MyEntityManager;
-
+import com.academysmart.jpa.model.Flight;
 
 public class FlightAction {
 	

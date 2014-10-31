@@ -17,19 +17,15 @@ public class Ticket {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long ticketId;
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "passengerId", referencedColumnName = "passengerId")
     private Passenger passenger;
-//    @ManyToOne(fetch=FetchType.LAZY)
-//    @JoinColumn(name = "airportId", referencedColumnName = "airportId")
-//    private Airport airport;
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "flightId", referencedColumnName = "flightId")
     private Flight flight;
-    private int price;
+    private double price;
     private int baggage;
     private boolean child;
-    private int numberofclass;
     private String category;
 
 	public Ticket() {
@@ -52,14 +48,6 @@ public class Ticket {
         this.passenger = passenger;
     }
     
-//    public Airport getAirport() {
-//        return airport;
-//    }
-//
-//    public void setAirport(Airport airport) {
-//        this.airport = airport;
-//    }
-
     public Flight getFlight() {
         return flight;
     }
@@ -68,11 +56,11 @@ public class Ticket {
         this.flight = flight;
     }
     
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
@@ -91,15 +79,7 @@ public class Ticket {
 	public void setChild(boolean child) {
 		this.child = child;
 	}
-	
-	public int getNumberofclass() {
-		return numberofclass;
-	}
-	
-	public void setNumberofclass(int numberofclass) {
-		this.numberofclass = numberofclass;
-	}
-	
+		
 	public String getCategory() {
 		return category;
 	}
@@ -110,13 +90,14 @@ public class Ticket {
 	
     @Override
     public String toString() {
-        return "Ticket: " 
-                + "(Ticket ID=" + ticketId 
-                + ", Passenger - " + passenger 
-                + ", Flight - " + flight 
-                + ", Categoty - " + category
-                + ", Price - " + price 
-                + ", Baggage - " + baggage 
-                + ", Child - '" + child + ");"; 
+        return  "---------------------------------------------" +"\n"
+        		+ "TICKET: " +"\n"
+                + "    TICKET ID - " + ticketId +"\n"
+                + "    PASSENGER - " + passenger +"\n"
+                + "    FLIGHT - " + flight +"\n"
+                + "    CATEGORY - " + category +"\n"
+                + "    PRICE - " + price +"\n"
+                + "    BAGGAGE - " + baggage +"\n"
+                + "    CHILD - '" + child + ");"; 
     }
 }

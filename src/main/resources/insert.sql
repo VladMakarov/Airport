@@ -21,13 +21,14 @@ INSERT INTO FlightType
 		('Second Class', 200),
 		('Third Class', 0);
 		
-INSERT INTO FlightSpecific
-		(flightTypeId, date, airportIdDeparture, airportIdArrival, price)
+INSERT INTO Flight
+		(flightTypeId, date, airportIdDeparture, airportIdArrival, price, category)
 	VALUES
-		(1, '1998/05/31:12:00:00AM', 1, 6, 1100),
-		(1, '1998/05/31:12:00:00AM', 1, 7, 1200),
-		(2, '1998/05/31:12:00:00AM', 1, 2, 600),
-		(2, '1998/05/31:12:00:00AM', 1, 4, 800),
-		(3, '1998/05/31:12:00:00AM', 1, 3, 700),
-		(3, '1998/05/31:12:00:00AM', 1, 5, 900);
+		(1, '1998/05/31:12:00:00AM', 1, 6, 1100, 'Luxury'),
+		(1, '1998/05/31:12:00:00AM', 1, 7, 1200, 'Luxury'),
+		(2, '1998/05/31:12:00:00AM', 1, 2, 600, 'Mid Luxury'),
+		(2, '1998/05/31:12:00:00AM', 1, 4, 800, 'Mid Luxury'),
+		(3, '1998/05/31:12:00:00AM', 1, 3, 700, 'Budget'),
+		(3, '1998/05/31:12:00:00AM', 1, 5, 900, 'Budget');
+		
 

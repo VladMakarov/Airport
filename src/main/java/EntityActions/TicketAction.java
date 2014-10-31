@@ -26,24 +26,18 @@ public class TicketAction {
 		return result;
 	}
 	
-//	private void calculatePrice(Ticket ticket, Session session) {
-//		double price = ticket.getFlight().getRoute().getPrice();
-//		if (ticket.getType().toLowerCase().equals("adult")) {
-//		ticket.setPrice(price + (ticket.getBaggage() * 40));
-//		} else ticket.setPrice((price + (ticket.getBaggage() * 40)) * 0.8);
-//		if (ticket.getNumberofclass() == 1 && (ticket.getType().equals("adult")) && ticket.getFlight().getFirstClass() != 0) {
-//		session.update(ticket.getFlight());
-//		ticket.getFlight().setFirstClass((ticket.getFlight().getFirstClass()) - 1);
-//		ticket.setPrice(ticket.getPrice() + 300);
-//		} else if (ticket.getNumberofclass() == 2 && (ticket.getType().equals("adult")) && ticket.getFlight().getSecondClass() != 0) {
-//		session.update(ticket.getFlight());
-//		ticket.getFlight().setSecondClass((ticket.getFlight().getSecondClass()) - 1);
-//		ticket.setPrice(ticket.getPrice() + 200);
-//		} else if (ticket.getNumberofclass() == 3 && !(ticket.getType().equals("adult")) && ticket.getFlight().getSecondClass() != 0) {
-//		session.update(ticket.getFlight());
-//		ticket.getFlight().setSecondClass((ticket.getFlight().getSecondClass()) - 1);
-//		}
-//		}
+	public double calculatePrice(Ticket ticket) {
+		double result = 0;
+		double bagageCost = 0;
+		bagageCost = ticket.getBaggage() * 40;
+		result = ticket.getFlight().getPrice() + ticket.getFlight().getFlightType().getPrice();
+		if(ticket.getChild()){
+			result *= 0.8;
+		}
+		result += bagageCost;
+		System.out.println(result);
+		return result;
+	}
 	
 	public void addTicket(Ticket ticket){
 		try {
