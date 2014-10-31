@@ -1,29 +1,32 @@
 package com.academysmart.jpa.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+
 
 @Entity
+@NamedQuery(name = "selectFlightSpecifics", query = "SELECT fs FROM FlightSpecific fs")
 public class FlightSpecific {
 		
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "flightSpecificId")
-	@SequenceGenerator(name = "flightSpecificId", sequenceName = "flightSpecificId_Seq", initialValue=1, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long flightSpecificId;
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "flightTypeId", referencedColumnName = "flightTypeIdId")
+    @ManyToOne
+    @JoinColumn(name = "flightTypeId", referencedColumnName = "flightTypeId")
     private FlightType flightType;
-	private Date date;
-	private String departure;
-	private String arrival;
+	private String date;
+	@ManyToOne
+	@JoinColumn(name = "airportIdDeparture", referencedColumnName = "airportId")
+	private Airport departure;
+	@ManyToOne
+	@JoinColumn(name = "airportIdArrival", referencedColumnName = "airportId")
+	private Airport arrival;
     private int price;
 	
 	public FlightSpecific() {
@@ -46,27 +49,27 @@ public class FlightSpecific {
         this.flightType = flightType;
     }
 	
-	public Date getDate(){
+	public String getDate(){
 		return date;
 	}
 	
-	public void setDate(Date date){
+	public void setDate(String date){
 		this.date = date;
 	}
 
-	public String getDeparture() {
+	public Airport getDeparture() {
 		return departure;
 	}
 
-	public void setDeparture(String departure) {
+	public void setDeparture(Airport departure) {
 		this.departure = departure;
 	}
 
-	public String getArrival() {
+	public Airport getArrival() {
 		return arrival;
 	}
 
-	public void setArrival(String arrival) {
+	public void setArrival(Airport arrival) {
 		this.arrival = arrival;
 	}
 
@@ -81,11 +84,12 @@ public class FlightSpecific {
 	@Override
 	public String toString() {
 		return "Flight Specific: "
-				+ "(Flight Specific ID - " + " " + flightSpecificId 
-				+ ", Flight Type - " + flightType
-				+ ", Date - " + date
-				+ ", Departure - " + departure 
-				+ ", Arrival - " + arrival 
-				+ ", Price - " + price + ");";
+//				+ "(Flight Specific ID - " + " " + flightSpecificId 
+				+ "(FLIGHT TYPE " + flightType
+				+ ", DATE - " + date
+				+ ", DEPARTURE - " + departure 
+			    + ", ARRIVAL - " + arrival 
+				+ ", PRICE - " + price + ");";
 	}
+
 }

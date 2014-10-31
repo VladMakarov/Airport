@@ -6,14 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.NamedQuery;
+
 
 @Entity
+@NamedQuery(name = "selectFlights", query = "SELECT f FROM Flight f")
 public class Flight {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "FlightId")
-	@SequenceGenerator(name = "FlightId", sequenceName = "FlightId_Seq", initialValue=1, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long flightId;
 	@ManyToOne
 	@JoinColumn(name = "flightSpecificId", referencedColumnName = "flightSpecificId")
@@ -53,8 +54,8 @@ public class Flight {
 	@Override
 	public String toString() {
 		return "Flight: "
-				+ "(Flight ID - " + " " + flightId  
-				+ ", Flight Specific - " + flightSpecific
-				+ ", Airport - " + airport + ");";
+//				+ "(Flight ID - " + " " + flightId  
+				+ ", FLIGHT SPECIFIC - " + flightSpecific
+				+ ", AIRPORT - " + airport + ");";
 	}
 }

@@ -5,8 +5,12 @@
 	version="2.0">
 	<persistence-unit name="derbyTest" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.academysmart.jpa.model.Adress</class>
-		<class>com.academysmart.jpa.model.Employee</class>
+		<class>com.academysmart.jpa.model.Airport</class>
+		<class>com.academysmart.jpa.model.Flight</class>
+		<class>com.academysmart.jpa.model.FlightType</class>
+		<class>com.academysmart.jpa.model.FlightSpecific</class>
+		<class>com.academysmart.jpa.model.Passenger</class>
+		<class>com.academysmart.jpa.model.Ticket</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:test;create=true" />

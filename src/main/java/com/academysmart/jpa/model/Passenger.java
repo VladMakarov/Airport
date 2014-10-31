@@ -4,14 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.NamedQuery;
+
 
 @Entity
+@NamedQuery(name = "selectPassengers", query = "SELECT p FROM Passenger p")
 public class Passenger {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "passengerId")
-	@SequenceGenerator(name = "passengerId", sequenceName = "passengerId_Seq", initialValue=1, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long passengerId;
 	private String fname;
 	private String lname;

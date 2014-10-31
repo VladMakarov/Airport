@@ -3,11 +3,11 @@ package com.academysmart.jpa.model;
 import javax.persistence.*;
 
 @Entity
+@NamedQuery(name = "selectAirports", query = "SELECT a FROM Airport a")
 public class Airport {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "AirportId")
-	@SequenceGenerator(name = "AirportId", sequenceName = "AirportId_Seq", initialValue=1, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long airportId;
 	private String name;
 	private String adress;
@@ -38,8 +38,8 @@ public class Airport {
 	@Override
 	public String toString() {
 		return "Airport: "
-				+ "(Airport ID - " + " " + airportId  
-				+ ", Name - " + name
-				+ ", Adress - " + adress + ");";
+//				+ "(Airport ID - " + " " + airportId  
+				+ "(NAME - " + name
+				+ ", ADRESS - " + adress + ")";
 	}
 }

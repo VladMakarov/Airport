@@ -7,14 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.NamedQuery;
+
 
 @Entity
+@NamedQuery(name = "selectTickets", query = "SELECT t FROM Ticket t")
 public class Ticket {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ticketId")
-	@SequenceGenerator(name = "ticketId", sequenceName = "ticketId_Seq", initialValue=1, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long ticketId;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "passengerId", referencedColumnName = "passengerId")
@@ -29,6 +30,7 @@ public class Ticket {
     private int baggage;
     private boolean child;
     private int numberofclass;
+    private String category;
 
 	public Ticket() {
 		
@@ -98,13 +100,21 @@ public class Ticket {
 		this.numberofclass = numberofclass;
 	}
 	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
     @Override
     public String toString() {
         return "Ticket: " 
                 + "(Ticket ID=" + ticketId 
-                + ", passenger - " + passenger 
-//                + ", airport - " + airport 
-                + ", flight - " + flight 
+                + ", Passenger - " + passenger 
+                + ", Flight - " + flight 
+                + ", Categoty - " + category
                 + ", Price - " + price 
                 + ", Baggage - " + baggage 
                 + ", Child - '" + child + ");"; 
