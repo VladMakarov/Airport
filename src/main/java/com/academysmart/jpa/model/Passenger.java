@@ -57,6 +57,6 @@ public class Passenger {
 	
 	@Override
 	public String toString() {
-		return   lname + " " + fname  + " " + patronymic + ", Phone number - " + phoneNumber;
+		return   lname + " " + fname  + " " + patronymic + ", Phone number: " + phoneNumber;
 	}
 }

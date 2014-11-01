@@ -49,10 +49,10 @@ public class EmployeeIT {
 		FlightAction fa = new FlightAction();
 		TicketAction t = new TicketAction();
 		Ticket ticket = new Ticket();
-		ticket.setPassenger(pa.getPassengerById(1));    // 1й пассажир из таблицы
-		ticket.setFlight(fa.getFlightById(2));			// 2й класс
+		ticket.setPassenger(pa.getPassengerById(1));    // Выбрать пассажира из таблицы
+		ticket.setFlight(fa.getFlightById(3));			// Выбрать рейс
 		ticket.setBaggage(15);							// Багаж	
-		ticket.setChild(true);                          // Взрослый/Детский
+		ticket.setChild(false);                          // Взрослый/Детский
 		ticket.setCategory(ticket.getFlight().getCategory());  // Категория
 		ticket.setPrice(t.calculatePrice(ticket));		// Подсчет цены
 		t.addTicket(ticket);

@@ -1,7 +1,6 @@
 package com.academysmart.jpa.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -90,14 +89,14 @@ public class Ticket {
 	
     @Override
     public String toString() {
-        return  "---------------------------------------------" +"\n"
+        return  "---------------------------------------------" + "\n"
         		+ "TICKET: " +"\n"
-                + "    TICKET ID - " + ticketId +"\n"
-                + "    PASSENGER - " + passenger +"\n"
-                + "    FLIGHT - " + flight +"\n"
-                + "    CATEGORY - " + category +"\n"
-                + "    PRICE - " + price +"\n"
-                + "    BAGGAGE - " + baggage +"\n"
-                + "    CHILD - '" + child + ");"; 
+                + "\tTICKET ID - " + ticketId + ".\n"
+                + "\tPASSENGER - " + passenger + ".\n"
+                + "\tFLIGHT - " + flight + "\n"
+                + "\tCATEGORY - " + category + ".\n"
+                + "\tBAGGAGE - " + baggage + "kg.\n"
+                + "\tCHILD - " + child + ".\n"
+                + "\tPRICE - " + price + " uah.";
     }
 }

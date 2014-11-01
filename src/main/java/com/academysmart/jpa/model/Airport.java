@@ -37,9 +37,6 @@ public class Airport {
 	
 	@Override
 	public String toString() {
-		return "Airport: "
-//				+ "(Airport ID - " + " " + airportId  
-				+ "(NAME - " + name
-				+ ", ADRESS - " + adress + ")";
+		return "Airport: " + name+ ", ADRESS: " + adress + ".";
 	}
 }

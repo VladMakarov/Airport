@@ -35,7 +35,6 @@ public class TicketAction {
 			result *= 0.8;
 		}
 		result += bagageCost;
-		System.out.println(result);
 		return result;
 	}
 	

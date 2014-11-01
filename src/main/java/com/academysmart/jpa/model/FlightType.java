@@ -39,10 +39,7 @@ public class FlightType {
 	
 	@Override
 	public String toString() {
-		return "Flight Type: "
-//				+ "(Flight Type ID - " + " " + flightTypeId  
-				+ "(CLASS - " + numberOfClass
-				+ ", PRICE - " + price + ");";
+		return  numberOfClass;
 	}
 
 }

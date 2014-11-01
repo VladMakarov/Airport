@@ -92,11 +92,10 @@ public class Flight {
 	
 	@Override
 	public String toString() {
-		return  "(FLIGHT TYPE " + flightType
-				+ ", DATE - " + date
-				+ ", DEPARTURE - " + departure 
-			    + ", ARRIVAL - " + arrival 
-				+ ", PRICE - " + price + ");";
+		return  flightType + "\n"
+				+ "\t\t DATE - " + date + "\n"
+				+ "\t\t DEPARTURE - " + departure + "\n"
+			    + "\t\t ARRIVAL - " + arrival;
 	}
 
 }
