@@ -1,8 +1,12 @@
 package com.academysmart.jpa.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.util.List;
+
 import org.junit.Test;
+
 import EntityActions.AirportAction;
 import EntityActions.FlightAction;
 import EntityActions.PassengerAction;
@@ -12,11 +16,11 @@ import MyEntityFactory.MyEntityManager;
 public class EmployeeIT {
 	
 	@Test
-	public void getPassengerById(){
-		PassengerAction pa = new PassengerAction();
-        System.out.println(pa.getPassengerById(1));
+	public void shouldFindPassenger(){
+		Passenger pass = MyEntityManager.em.find(Passenger.class, 1L);
+		assertEquals("Makarov", pass.getLname());
 	}
-	
+
 	@Test
 	public void addPassenger(){
 		Passenger passenger = new Passenger();
@@ -30,13 +34,7 @@ public class EmployeeIT {
 		List<Passenger> pass = MyEntityManager.em.createNamedQuery("selectPassengers").getResultList();
 		assertEquals(2, pass.size());
 	}
-	
-	@Test
-	public void getAllEmployee(){
-		PassengerAction pa = new PassengerAction();
-		System.out.println(pa.getAllPassengers());
-	}
-	
+		
 	@Test
 	public void getAllAirport(){
 		AirportAction aa = new AirportAction();
@@ -49,19 +47,24 @@ public class EmployeeIT {
 		FlightAction fa = new FlightAction();
 		TicketAction t = new TicketAction();
 		Ticket ticket = new Ticket();
-		ticket.setPassenger(pa.getPassengerById(1));    // Выбрать пассажира из таблицы
-		ticket.setFlight(fa.getFlightById(3));			// Выбрать рейс
-		ticket.setBaggage(15);							// Багаж	
-		ticket.setChild(false);                          // Взрослый/Детский
-		ticket.setCategory(ticket.getFlight().getCategory());  // Категория
-		ticket.setPrice(t.calculatePrice(ticket));		// Подсчет цены
+		ticket.setPassenger(pa.getPassengerById(1));    // Choose Passenger from table
+		ticket.setFlight(fa.getFlightById(3));			// Choose flight
+		ticket.setBaggage(15);							// Set baggage	
+		ticket.setChild(false);                          // Child ticket
+		ticket.setCategory(ticket.getFlight().getCategory());  // get category
+		ticket.setPrice(t.calculatePrice(ticket));		// Calculate price
 		t.addTicket(ticket);
+		@SuppressWarnings("unchecked")
+		List<Ticket> tickets = MyEntityManager.em.createNamedQuery("selectTickets").getResultList();
+		assertEquals(1, tickets.size());
 	}
 	
 	@Test
-	public void getTicketById(){
-		TicketAction t = new TicketAction();
-        System.out.println(t.getTicketById(1));
+	public void shouldEqualsTicketPrice(){
+		TicketAction ta = new TicketAction();
+		Ticket ticket = ta.getTicketById(1);
+		assertTrue(ticket.getPrice() == 1400);
+		System.out.println(ta.getTicketById(1));
 	}
 	
 }
